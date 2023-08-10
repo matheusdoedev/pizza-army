@@ -22,6 +22,10 @@ export const Reset = createGlobalStyle`
         text-decoration: none;
     }
 
+	a:disabled, button:disabled {
+		cursor: not-allowed;
+	}
+
 	img {
         display: block;
         width: 100%;
