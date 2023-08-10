@@ -3,9 +3,7 @@ import { ThemeProvider } from "styled-components";
 
 import { router } from "./routes";
 
-import { colors, fonts, gaps, Reset } from "@/styles";
-
-const theme = { colors, fonts, gaps };
+import { Reset, theme } from "@/styles";
 
 const App = () => {
   return (

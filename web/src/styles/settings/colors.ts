@@ -1,1 +1,15 @@
-export const colors = {};
+export const colors = {
+  primary: "#1F6D29",
+  yellow: "#FFB521",
+  red: "#DC1E1D",
+  purple: "#A682E6",
+  gray: {
+    "300": "#0000001A",
+    "400": "#E2E2E2",
+    "500": "#00000026",
+    "600": "#00000040",
+    "700": "#BFBFBF",
+    "800": "#271718",
+    "900": "#281815",
+  },
+};
