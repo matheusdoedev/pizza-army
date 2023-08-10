@@ -23,10 +23,10 @@ const Header = () => {
 
         <Title
           as="h1"
-          fontSize="24px"
+          fontSize={["20px", "24px"]}
           color={theme.colors.primary}
           align="center"
-          letterSpacing="1.92px"
+          letterSpacing={["1.6px", "1.92px"]}
         >
           Pizza Army
         </Title>

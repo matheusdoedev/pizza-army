@@ -18,8 +18,8 @@ const Rating = () => {
 
       <Title
         as="strong"
-        fontSize="12px"
-        letterSpacing="0.72px"
+        fontSize={["10px", "12px"]}
+        letterSpacing={["0.6px", "0.72px"]}
         color={theme.colors.yellow}
       >
         42 Avaliações

@@ -45,8 +45,8 @@ const ProductSelector = () => {
       <ProductHead>
         <Title
           as="h3"
-          fontSize="32px"
-          letterSpacing="1.92px"
+          fontSize={["20px", "32px"]}
+          letterSpacing={["1.2px", "1.92px"]}
           color={theme.colors.gray["800"]}
         >
           Margherita
@@ -55,16 +55,15 @@ const ProductSelector = () => {
         <Rating />
       </ProductHead>
 
-      <Text style={{ marginBottom: "16px" }}>
+      <ProductDescription>
         Crosta fina, molho de tomate fresco, queijo mozzarella derretido e
         manjericão aromático, uma combinação clássica e irresistível.
-      </Text>
+      </ProductDescription>
 
       <Select
         label="Sabor"
         name="taste"
         value={pizzaTaste}
-        containerStyle={{ marginBottom: "24px" }}
         onChange={(value) => setPizzaTaste(value)}
       />
 
@@ -97,21 +96,48 @@ const ProductSelector = () => {
 };
 
 const ProductSelectorWrapper = styled.section`
-  padding: 12px 48px 0 48px;
+  padding: 16px 0 0 0;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 12px 48px 0 48px;
+  }
 `;
 
 const ProductHead = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    margin-bottom: 16px;
+  }
+`;
+
+const ProductDescription = styled.p`
+  font-family: ${({ theme }) => theme.fonts.secondary};
+  font-size: 10px;
+  line-height: 1.4em;
+  color: ${({ theme }) => theme.colors.gray["900"]};
+  margin-bottom: 12px;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
 `;
 
 const SubtotalSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
 `;
 
 const ProductUnitsCounter = styled.section`
