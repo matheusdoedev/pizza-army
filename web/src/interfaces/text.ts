@@ -1,8 +1,11 @@
+import { ReactNode } from "react";
+
 export interface TextProps {
+  children: ReactNode;
   fontWeight?: string;
   fontSize?: string;
   color?: string;
-  textAlign?: "center" | "left" | "right" | "justified";
+  align?: "center" | "left" | "right" | "justified";
   letterSpacing?: string;
 }
 
