@@ -25,19 +25,14 @@ const Header = () => {
           as="h1"
           fontSize="24px"
           color={theme.colors.primary}
-          textAlign="center"
+          align="center"
           letterSpacing="1.92px"
         >
           Pizza Army
         </Title>
 
         <HeaderInfoSection>
-          <DiscountText
-            letterSpacing="0.21px"
-            textAlign="right"
-            fontWeight="600"
-            color={theme.colors.gray["800"]}
-          >
+          <DiscountText>
             A segunda pizza com <strong>20% OFF</strong>
           </DiscountText>
 
@@ -93,11 +88,18 @@ const HeaderInfoSection = styled.section`
   }
 `;
 
-const DiscountText = styled(Text)`
+const DiscountText = styled.p`
   display: none;
 
   @media (min-width: ${theme.breakpoints.lg}) {
     display: block;
+    letter-spacing: 0.21px;
+    text-align: right;
+    font-weight: 600;
+    font-family: ${theme.fonts.secondary};
+    font-size: 14px;
+    line-height: 1.4em;
+    color: ${theme.colors.gray["800"]};
 
     & > strong {
       color: ${theme.colors.primary};
