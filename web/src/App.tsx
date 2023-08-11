@@ -3,12 +3,13 @@ import { ThemeProvider } from "styled-components";
 
 import { router } from "./routes";
 
-import { Reset, theme } from "@/styles";
+import { Animations, Reset, theme } from "@/styles";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Reset />
+      <Animations />
 
       <RouterProvider router={router} />
     </ThemeProvider>
