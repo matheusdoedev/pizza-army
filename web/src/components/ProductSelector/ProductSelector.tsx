@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { MdAdd, MdRemove } from "react-icons/md";
 
 import {
+  Container,
   Title,
   Rating,
   Text,
@@ -10,6 +11,7 @@ import {
   Button,
   IngredientsList,
 } from "@/components";
+import { PIZZAS_IMAGES_LIST } from "@/constants";
 import { IngredientOption } from "@/interfaces";
 
 import { theme } from "@/styles";
@@ -38,62 +40,122 @@ const ProductSelector = () => {
     }
   };
 
+  const pizzaImages = () =>
+    PIZZAS_IMAGES_LIST.map(({ img2x, alt }) => (
+      <PizzaImage src={img2x} alt={alt} />
+    ));
+
   const isDecrementButtonDisabled = unitsCount === 0;
 
   return (
-    <ProductSelectorWrapper>
-      <ProductHead>
-        <Title
-          as="h3"
-          fontSize={["20px", "32px"]}
-          letterSpacing={["1.2px", "1.92px"]}
-          color={theme.colors.gray["800"]}
-        >
-          Margherita
-        </Title>
+    <SelectedPizzaSection>
+      <SelectedPizzaContainer>
+        <PizzaImages>{pizzaImages()}</PizzaImages>
 
-        <Rating />
-      </ProductHead>
+        <ProductSelectorWrapper>
+          <ProductHead>
+            <Title
+              as="h3"
+              fontSize={["20px", "32px"]}
+              letterSpacing={["1.2px", "1.92px"]}
+              color={theme.colors.gray["800"]}
+            >
+              Margherita
+            </Title>
 
-      <ProductDescription>
-        Crosta fina, molho de tomate fresco, queijo mozzarella derretido e
-        manjericão aromático, uma combinação clássica e irresistível.
-      </ProductDescription>
+            <Rating />
+          </ProductHead>
 
-      <Select
-        label="Sabor"
-        name="taste"
-        value={pizzaTaste}
-        onChange={(value) => setPizzaTaste(value)}
-      />
+          <ProductDescription>
+            Crosta fina, molho de tomate fresco, queijo mozzarella derretido e
+            manjericão aromático, uma combinação clássica e irresistível.
+          </ProductDescription>
 
-      <SubtotalSection>
-        <ProductUnitsCounter>
-          <DecreaseButton
-            onClick={handleChangeUnitsCount("decrement")}
-            disabled={isDecrementButtonDisabled}
-          >
-            <MdRemove />
-          </DecreaseButton>
-          <Text align="center" letterSpacing="0.84px">
-            {unitsCount}
-          </Text>
-          <IncreaseButton onClick={handleChangeUnitsCount("increment")}>
-            <MdAdd />
-          </IncreaseButton>
-        </ProductUnitsCounter>
+          <Select
+            label="Sabor"
+            name="taste"
+            value={pizzaTaste}
+            onChange={(value) => setPizzaTaste(value)}
+          />
 
-        <Text align="center" letterSpacing="0.84px">
-          Subtotal: <strong>R$ 89,90</strong>
-        </Text>
-      </SubtotalSection>
+          <SubtotalSection>
+            <ProductUnitsCounter>
+              <DecreaseButton
+                onClick={handleChangeUnitsCount("decrement")}
+                disabled={isDecrementButtonDisabled}
+              >
+                <MdRemove />
+              </DecreaseButton>
+              <Text align="center" letterSpacing="0.84px">
+                {unitsCount}
+              </Text>
+              <IncreaseButton onClick={handleChangeUnitsCount("increment")}>
+                <MdAdd />
+              </IncreaseButton>
+            </ProductUnitsCounter>
 
-      <Button style={{ marginBottom: "24px" }}>Adicionar ao carrinho</Button>
+            <Text
+              align="center"
+              fontSize={["16px", "18px"]}
+              letterSpacing={["0.48px", "0.84px"]}
+            >
+              Subtotal: <strong>R$ 89,90</strong>
+            </Text>
+          </SubtotalSection>
 
-      <IngredientsList options={INGREDIENTS_OPTIONS} />
-    </ProductSelectorWrapper>
+          <AddToCartButton>Adicionar ao carrinho</AddToCartButton>
+
+          <IngredientsList options={INGREDIENTS_OPTIONS} />
+        </ProductSelectorWrapper>
+      </SelectedPizzaContainer>
+    </SelectedPizzaSection>
   );
 };
+
+const SelectedPizzaSection = styled.section`
+  margin-top: 8px;
+  margin-bottom: 80px;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    margin-top: 16px;
+  }
+`;
+
+const SelectedPizzaContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
+  }
+`;
+
+const PizzaImages = styled.section`
+  display: flex;
+  gap: 8px;
+  overflow: scroll;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+`;
+
+const PizzaImage = styled.img`
+  width: 208px;
+  height: 208px;
+  border-radius: 4px;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    max-width: 360px;
+    max-height: 360px;
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 const ProductSelectorWrapper = styled.section`
   padding: 16px 0 0 0;
@@ -132,7 +194,7 @@ const SubtotalSection = styled.section`
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 
   @media (min-width: ${theme.breakpoints.lg}) {
     margin-top: 24px;
@@ -151,8 +213,8 @@ const IncreaseButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.primary};
 
@@ -163,8 +225,18 @@ const IncreaseButton = styled.button`
 
   & > svg {
     fill: ${({ theme }) => theme.colors.gray["100"]};
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    width: 32px;
+    height: 32px;
+
+    & > svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -177,6 +249,14 @@ const DecreaseButton = styled(IncreaseButton)`
     }
 
     background-color: ${({ theme }) => theme.colors.gray["300"]};
+  }
+`;
+
+const AddToCartButton = styled(Button)`
+  margin-bottom: 16px;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    margin-bottom: 24px;
   }
 `;
 

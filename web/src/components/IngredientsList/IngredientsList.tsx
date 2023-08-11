@@ -16,7 +16,12 @@ const IngredientsList: FC<IngredientsListProps> = ({ options }) => {
     options.map(({ description }) => (
       <Ingredient key={description}>
         <MdDone />
-        <Text as="li" fontSize="12px" color={theme.colors.gray["900"]}>
+        <Text
+          as="li"
+          fontSize="12px"
+          fontWeight="300"
+          color={theme.colors.gray["900"]}
+        >
           {description}
         </Text>
       </Ingredient>
@@ -34,7 +39,7 @@ const Ingredients = styled.ul`
 const Ingredient = styled.li`
   display: flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 12px;
 
   & > svg {
     width: 28px;

@@ -7,6 +7,7 @@ const Text = styled.p<TextProps>`
   font-weight: ${({ fontWeight }) => fontWeight ?? "400"};
   line-height: 1.4em;
   margin-top: 1px;
+  max-width: 30em;
   color: ${({ color, theme }) => color ?? theme.colors.gray["900"]};
   text-align: ${({ align }) => align ?? "left"};
 
