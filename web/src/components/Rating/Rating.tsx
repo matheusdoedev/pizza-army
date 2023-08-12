@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { MdStar } from "react-icons/md";
 import { styled } from "styled-components";
 
@@ -5,7 +6,11 @@ import { Title } from "@/components";
 
 import { theme } from "@/styles";
 
-const Rating = () => {
+interface RatingProps {
+  withoutText?: boolean;
+}
+
+const Rating: FC<RatingProps> = ({ withoutText }) => {
   return (
     <RatingWrapper>
       <Stars>
@@ -16,14 +21,16 @@ const Rating = () => {
         <MdStar />
       </Stars>
 
-      <Title
-        as="strong"
-        fontSize={["10px", "12px"]}
-        letterSpacing={["0.6px", "0.72px"]}
-        color={theme.colors.yellow}
-      >
-        42 Avaliações
-      </Title>
+      {!withoutText && (
+        <Title
+          as="strong"
+          fontSize={["10px", "12px"]}
+          letterSpacing={["0.6px", "0.72px"]}
+          color={theme.colors.yellow}
+        >
+          42 Avaliações
+        </Title>
+      )}
     </RatingWrapper>
   );
 };

@@ -5,7 +5,7 @@ export const colors = {
   purple: "#A682E6",
   gray: {
     "100": "#FFF",
-    "200": "#F1F1F1",
+    "200": "#FAF5E5",
     "300": "#E2E2E2",
     "400": "#BFBFBF",
     "500": "#0000001A",

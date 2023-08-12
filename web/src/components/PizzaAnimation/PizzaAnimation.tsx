@@ -1,83 +1,73 @@
-import { useEffect, useState } from "react";
 import { css, styled } from "styled-components";
 
-import { Title, Text } from "@/components";
-import PizzaImg from "@/assets/images/pizza-animation-2x.png";
+import {
+  Title,
+  Text,
+  TestimonialsList,
+  StrenghtsList,
+  PizzaAnimationImg,
+} from "@/components";
+
+import { usePizzaOnScrollAnimation } from "@/hooks";
+import { AnimatedFooterElements } from "@/interfaces";
 
 import { theme } from "@/styles";
 
-interface PizzaImgPositionProps {
-  top: number;
-  rotate: number;
-}
-
-const PIZZA_IMG_POSITION_DEFAULT_VALUE = { top: 0, rotate: 21 };
-
 const PizzaAnimation = () => {
-  const [pizzaImgPosition, setPizzaImgPosition] =
-    useState<PizzaImgPositionProps>(PIZZA_IMG_POSITION_DEFAULT_VALUE);
-  const [isFooterElementsActive, setIsFooterElementsActive] = useState(false);
+  const { isFooterElementsTransitionActive, animatedImagesPositions } =
+    usePizzaOnScrollAnimation();
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const scrollTop = document.documentElement.scrollTop;
-
-      if (scrollTop <= 510) {
-        setPizzaImgPosition(PIZZA_IMG_POSITION_DEFAULT_VALUE);
-      } else if (scrollTop > 510 && scrollTop < 1100) {
-        setPizzaImgPosition({
-          top: scrollTop - 510,
-          rotate: scrollTop * (45 / 1100),
-        });
-      } else {
-        setPizzaImgPosition({
-          top: 589,
-          rotate: 45,
-        });
-      }
-      setIsFooterElementsActive(scrollTop > 1160);
-    });
-  }, []);
+  const animatedImages = () =>
+    Object.values(animatedImagesPositions).map(({ ...props }) => (
+      <PizzaAnimationImg key={props.alt} {...props} />
+    ));
 
   return (
     <PizzaAnimationWrapper>
-      <Pizza src={PizzaImg} alt="Pizza" {...pizzaImgPosition} />
+      <PizzaAnimationContainer>
+        {animatedImages()}
 
-      <DiscoverTheTaste isActive={isFooterElementsActive}>
-        <Title
-          as="h2"
-          fontSize="48px"
-          letterSpacing="2.88px"
-          color={theme.colors.gray["800"]}
-        >
-          DESCUBRA O SABOR DA TRADIÇÃO
-        </Title>
-        <Text fontSize="16px" color={theme.colors.gray["900"]} fontWeight="300">
-          Com receitas transmitidas à gerações, ingredientes selecionados e
-          forno a lenha, garantimos uma experiência gastronômica memorável.
-        </Text>
-      </DiscoverTheTaste>
+        <DiscoverTheTaste isActive={isFooterElementsTransitionActive}>
+          <Title
+            as="h2"
+            fontSize="48px"
+            letterSpacing="2.88px"
+            color={theme.colors.gray["800"]}
+          >
+            DESCUBRA O SABOR DA TRADIÇÃO
+          </Title>
+          <Text
+            fontSize="16px"
+            color={theme.colors.gray["900"]}
+            fontWeight="300"
+          >
+            Com receitas transmitidas à gerações, ingredientes selecionados e
+            forno a lenha, garantimos uma experiência gastronômica memorável.
+          </Text>
+        </DiscoverTheTaste>
+
+        <StrenghtsList isAnimationActivate={isFooterElementsTransitionActive} />
+
+        <TestimonialsList
+          isAnimationActivate={isFooterElementsTransitionActive}
+        />
+      </PizzaAnimationContainer>
     </PizzaAnimationWrapper>
   );
 };
 
 const PizzaAnimationWrapper = styled.section`
+  overflow: hidden;
+`;
+
+const PizzaAnimationContainer = styled.section`
   position: relative;
+  width: 1290px;
+  margin: 0 auto;
   height: 1400px;
 `;
 
-const Pizza = styled.img<PizzaImgPositionProps>`
-  position: absolute;
-  top: ${({ top }) => `${top}px`};
-  left: 50%;
-  transform: ${({ rotate }) => `rotate(${rotate}deg)`};
-  margin-left: -204.5px;
-
-  width: 409px;
-  height: 389px;
-`;
-
-const DiscoverTheTaste = styled.section<{ isActive: boolean }>`
+const DiscoverTheTaste = styled.section<AnimatedFooterElements>`
   display: flex;
   flex-direction: column;
   row-gap: 8px;

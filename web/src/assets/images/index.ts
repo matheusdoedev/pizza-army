@@ -6,7 +6,7 @@ export { default as OnionImg } from "./onion-2x.png";
 export { default as PepperImg } from "./pepper-2x.png";
 export { default as SmallBaconImg } from "./small-bacon-2x.png";
 export { default as TomatoImg } from "./tomato-2x.png";
-export { default as TomatoTransparentImage } from "./tomato-transparent-2x.png";
+export { default as TomatoTransparentImg } from "./tomato-transparent-2x.png";
 export { default as PizzaAImg } from "./pizza-a-2x.png";
 export { default as PizzaBImg } from "./pizza-b-2x.png";
 export { default as PizzaCImg } from "./pizza-c-2x.png";

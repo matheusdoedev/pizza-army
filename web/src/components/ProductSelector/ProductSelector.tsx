@@ -11,19 +11,11 @@ import {
   Button,
   IngredientsList,
 } from "@/components";
-import { PIZZAS_IMAGES_LIST } from "@/constants";
-import { IngredientOption } from "@/interfaces";
+import { INGREDIENTS_OPTIONS, PIZZAS_IMAGES_LIST } from "@/constants";
 
 import { theme } from "@/styles";
 
 type UnitsCountActionType = "decrement" | "increment";
-
-const INGREDIENTS_OPTIONS: IngredientOption[] = [
-  { description: "Queijos importados" },
-  { description: "Catupiry de primeira qualidade" },
-  { description: "Bastante recheio" },
-  { description: "Forno à lenha" },
-];
 
 const ProductSelector = () => {
   const [pizzaTaste, setPizzaTaste] = useState("10");
