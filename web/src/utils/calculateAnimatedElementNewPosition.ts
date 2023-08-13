@@ -23,15 +23,24 @@ import {
 export const calculateAnimatedElementNewPosition = (
   elementName: AnimatedElementsName,
   scrollTop: number,
-  initialLeftPosition: number,
-  finalLeftPosition: number,
-  initialTopPosition: number,
-  finalTopPosition: number
+  initialLeftPosition: [number, number],
+  finalLeftPosition: [number, number],
+  initialTopPosition: [number, number],
+  finalTopPosition: [number, number]
 ) => {
+  const top = [
+    calculatePosition(initialTopPosition[0], finalTopPosition[0], scrollTop),
+    calculatePosition(initialTopPosition[1], finalTopPosition[1], scrollTop),
+  ];
+  const left = [
+    calculatePosition(initialLeftPosition[0], finalLeftPosition[0], scrollTop),
+    calculatePosition(initialLeftPosition[1], finalLeftPosition[1], scrollTop),
+  ];
+
   return {
     ...ANIMATED_IMAGES_POSITION_DEFAULT_VALUE[elementName],
-    top: calculatePosition(initialTopPosition, finalTopPosition, scrollTop),
-    left: calculatePosition(initialLeftPosition, finalLeftPosition, scrollTop),
+    top,
+    left,
     opacity: calculateOpacityFactor(scrollTop),
   };
 };

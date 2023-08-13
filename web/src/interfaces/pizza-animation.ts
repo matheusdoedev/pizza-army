@@ -3,12 +3,12 @@ export interface AnimatedFooterElements {
 }
 
 export interface PizzaAnimationImgProps {
-  width: number;
-  height: number;
+  width: number[]; // the first value of array is for mobile devices, and the second for desktop. the same thing for all properties that are array.
+  height: number[];
   src: string;
   alt: string;
-  top?: number;
-  left?: number;
+  top?: number[];
+  left?: number[];
   right?: number;
   rotate?: number;
   center?: boolean;

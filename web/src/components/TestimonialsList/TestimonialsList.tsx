@@ -4,7 +4,7 @@ import { css, styled } from "styled-components";
 import RedVerified from "@/assets/icons/red-verified.svg";
 import { Rating, Text } from "@/components";
 import { TESTIMONIALS_LIST } from "@/constants";
-import { AnimatedElements, ComponentWithAnimation } from "@/interfaces";
+import { AnimatedFooterElements, ComponentWithAnimation } from "@/interfaces";
 
 import { theme } from "@/styles";
 
@@ -54,7 +54,7 @@ const Testimonials = styled.section`
 `;
 
 const Testimony = styled.article<
-  AnimatedElements & { initialTranslatePosition: string }
+  AnimatedFooterElements & { initialTranslatePosition: string }
 >`
   display: flex;
   flex-direction: column;

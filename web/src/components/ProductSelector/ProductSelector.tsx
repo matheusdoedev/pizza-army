@@ -106,10 +106,11 @@ const ProductSelector = () => {
 
 const SelectedPizzaSection = styled.section`
   margin-top: 8px;
-  margin-bottom: 80px;
+  margin-bottom: 48px;
 
   @media (min-width: ${theme.breakpoints.lg}) {
     margin-top: 16px;
+    margin-bottom: 80px;
   }
 `;
 

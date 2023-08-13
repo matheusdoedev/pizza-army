@@ -1,29 +1,57 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import { css, styled } from "styled-components";
+
+import { useOnResizeWindow } from "@/hooks";
 
 import { PizzaAnimationImgProps } from "@/interfaces";
 
 const PizzaAnimationImgComponent: FC<PizzaAnimationImgProps> = ({
+  top,
+  left,
+  width,
+  height,
+  center,
   ...props
 }) => {
-  return <PizzaAnimationImg {...props} />;
+  const pizzaAnimationImgRef = useRef<HTMLImageElement>(null);
+  const { innerWidth } = useOnResizeWindow();
+
+  useEffect(() => {
+    if (!pizzaAnimationImgRef.current) return;
+
+    const isMobile = innerWidth < 768;
+    const index = isMobile ? 0 : 1;
+
+    pizzaAnimationImgRef.current.style.top = top ? `${top[index]}px` : "0";
+    pizzaAnimationImgRef.current.style.width = `${width[index]}px`;
+    pizzaAnimationImgRef.current.style.height = `${height[index]}px`;
+
+    if (center) {
+      pizzaAnimationImgRef.current.style.left = "50%";
+      pizzaAnimationImgRef.current.style.marginLeft = `${-(
+        width[index] / 2
+      )}px`;
+    } else {
+      pizzaAnimationImgRef.current.style.left = left ? `${left[index]}px` : "0";
+    }
+  }, [center, height, innerWidth, left, top, width]);
+
+  return (
+    <PizzaAnimationImg ref={pizzaAnimationImgRef} center={center} {...props} />
+  );
 };
 
-const PizzaAnimationImg = styled.img<PizzaAnimationImgProps>`
+const PizzaAnimationImg = styled.img<
+  Omit<PizzaAnimationImgProps, "top" | "left" | "width" | "height">
+>`
   position: absolute;
-  top: ${({ top }) => (top ? `${top}px` : 0)};
   z-index: ${({ zIndex }) => zIndex ?? 1};
   opacity: ${({ opacity }) => opacity ?? 1};
-  left: ${({ left }) => (left ? `${left}px` : "none")};
-  right: ${({ right }) => (right ? `${right}px` : "none")};
-  width: ${({ width }) => width + "px"};
-  height: ${({ height }) => height + "px"};
 
-  ${({ center, width }) =>
+  ${({ center }) =>
     center &&
     css`
       left: 50%;
-      margin-left: ${-(width / 2) + "px"};
     `}
 
   ${({ rotate }) =>

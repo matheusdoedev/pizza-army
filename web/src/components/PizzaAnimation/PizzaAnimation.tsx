@@ -63,8 +63,9 @@ const PizzaAnimationWrapper = styled.section`
 const PizzaAnimationContainer = styled.section`
   position: relative;
   width: 1290px;
-  margin: 0 auto;
   height: 1400px;
+  left: 50%;
+  margin: 0 auto 0 -645px;
 `;
 
 const DiscoverTheTaste = styled.section<AnimatedFooterElements>`
