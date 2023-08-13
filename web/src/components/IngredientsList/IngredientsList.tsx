@@ -16,12 +16,7 @@ const IngredientsList: FC<IngredientsListProps> = ({ options }) => {
     options.map(({ description }) => (
       <Ingredient key={description}>
         <MdDone />
-        <Text
-          as="li"
-          fontSize="12px"
-          fontWeight="300"
-          color={theme.colors.gray["900"]}
-        >
+        <Text fontSize="12px" fontWeight="300" color={theme.colors.gray["900"]}>
           {description}
         </Text>
       </Ingredient>
