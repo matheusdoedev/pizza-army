@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    environment:
+      - DB_HOST=172.17.0.1
+      - DB_PORT=3306
+      - DB_USER=docker
+      - DB_PASSWORD=docker
+      - DB_DATABASE=mysql
+    ports:
+      - '3333:3333'
+    command: yarn start:prod
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=mysql
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
+      - MYSQL_ROOT_PASSWORD=docker
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db-dump/:/docker-entrypoint-initdb.d
