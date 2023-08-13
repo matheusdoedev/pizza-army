@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { styled } from "styled-components";
 import { MdAdd, MdRemove } from "react-icons/md";
 
@@ -10,39 +9,30 @@ import {
   Select,
   Button,
   IngredientsList,
+  PizzaImages,
 } from "@/components";
-import { INGREDIENTS_OPTIONS, PIZZAS_IMAGES_LIST } from "@/constants";
+import { INGREDIENTS_OPTIONS } from "@/constants";
+import { useProductSelector } from "@/hooks";
 
 import { theme } from "@/styles";
 
-type UnitsCountActionType = "decrement" | "increment";
-
 const ProductSelector = () => {
-  const [pizzaTaste, setPizzaTaste] = useState("10");
-  const [unitsCount, setUnitsCount] = useState(0);
+  const {
+    productData,
+    productsOptions,
+    handleChangeProductTaste,
+    handleChangeUnitsCount,
+    selectedProductTaste,
+    isDecrementButtonDisabled,
+    productUnitsCount,
+  } = useProductSelector();
 
-  const handleChangeUnitsCount = (actionType: UnitsCountActionType) => () => {
-    switch (actionType) {
-      case "decrement":
-        if (unitsCount > 0) setUnitsCount(unitsCount - 1);
-        break;
-      case "increment":
-      default:
-        setUnitsCount(unitsCount + 1);
-    }
-  };
-
-  const pizzaImages = () =>
-    PIZZAS_IMAGES_LIST.map(({ img2x, alt }) => (
-      <PizzaImage key={img2x} src={img2x} alt={alt} />
-    ));
-
-  const isDecrementButtonDisabled = unitsCount === 0;
+  const { title, description } = productData;
 
   return (
     <SelectedPizzaSection>
       <SelectedPizzaContainer>
-        <PizzaImages>{pizzaImages()}</PizzaImages>
+        <PizzaImages />
 
         <ProductSelectorWrapper>
           <ProductHead>
@@ -52,22 +42,20 @@ const ProductSelector = () => {
               letterSpacing={["1.2px", "1.92px"]}
               color={theme.colors.gray["800"]}
             >
-              Margherita
+              {title}
             </Title>
 
             <Rating />
           </ProductHead>
 
-          <ProductDescription>
-            Crosta fina, molho de tomate fresco, queijo mozzarella derretido e
-            manjericão aromático, uma combinação clássica e irresistível.
-          </ProductDescription>
+          <ProductDescription>{description}</ProductDescription>
 
           <Select
             label="Sabor"
             name="taste"
-            value={pizzaTaste}
-            onChange={(value) => setPizzaTaste(value)}
+            value={selectedProductTaste}
+            options={productsOptions}
+            onChange={handleChangeProductTaste}
           />
 
           <SubtotalSection>
@@ -79,7 +67,7 @@ const ProductSelector = () => {
                 <MdRemove />
               </DecreaseButton>
               <Text align="center" letterSpacing="0.84px">
-                {unitsCount}
+                {productUnitsCount}
               </Text>
               <IncreaseButton onClick={handleChangeUnitsCount("increment")}>
                 <MdAdd />
@@ -122,31 +110,6 @@ const SelectedPizzaContainer = styled(Container)`
     display: grid;
     grid-template-columns: 7fr 5fr;
     align-items: start;
-  }
-`;
-
-const PizzaImages = styled.section`
-  display: flex;
-  gap: 8px;
-  overflow: scroll;
-
-  @media (min-width: ${theme.breakpoints.lg}) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-`;
-
-const PizzaImage = styled.img`
-  width: 208px;
-  height: 208px;
-  border-radius: 4px;
-
-  @media (min-width: ${theme.breakpoints.lg}) {
-    max-width: 360px;
-    max-height: 360px;
-    width: 100%;
-    height: 100%;
   }
 `;
 

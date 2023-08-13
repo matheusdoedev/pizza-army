@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import { Text } from "@/components";
+import { SelectOption } from "@/interfaces";
 
 import { theme } from "@/styles";
 
@@ -19,6 +20,7 @@ interface SelectProps {
   name: string;
   value: string;
   containerStyle?: SxProps<Theme>;
+  options: SelectOption[];
   onChange: (value: string) => void;
 }
 
@@ -27,11 +29,19 @@ const SelectComponent: FC<SelectProps> = ({
   name,
   value,
   onChange,
+  options,
   containerStyle,
 }) => {
   const handleChange = (event: SelectChangeEvent) => {
     onChange(event.target.value as string);
   };
+
+  const selectOptions = () =>
+    options.map(({ label, value }) => (
+      <MenuItem key={value} value={value}>
+        {label}
+      </MenuItem>
+    ));
 
   return (
     <Box sx={{ minWidth: 120, ...containerStyle }}>
@@ -47,9 +57,10 @@ const SelectComponent: FC<SelectProps> = ({
       </Text>
       <FormControlStyled style={{ marginTop: "4px" }} fullWidth>
         <Select labelId={name} id={name} value={value} onChange={handleChange}>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value=" " disabled>
+            Selecione uma opção
+          </MenuItem>
+          {selectOptions()}
         </Select>
       </FormControlStyled>
     </Box>

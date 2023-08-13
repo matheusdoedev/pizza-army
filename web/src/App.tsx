@@ -1,18 +1,22 @@
 import { RouterProvider } from "react-router-dom";
+import { QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 
-import { router } from "./routes";
+import { queryClient } from "@/providers";
+import { router } from "@/routes";
 
 import { Animations, Reset, theme } from "@/styles";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Reset />
-      <Animations />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Reset />
+        <Animations />
 
-      <RouterProvider router={router} />
-    </ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
