@@ -1,5 +1,5 @@
 export interface AnimatedFooterElements {
-  isactive: boolean;
+  $isactive: boolean;
 }
 
 export interface PizzaAnimationImgProps {

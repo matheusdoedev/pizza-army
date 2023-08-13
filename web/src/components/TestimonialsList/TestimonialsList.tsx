@@ -16,7 +16,7 @@ const TestimonialsList: FC<ComponentWithAnimation> = ({
       ({ id, text, userName, initialAnimationTranslateYPosition }) => (
         <Testimony
           key={id}
-          isactive={isAnimationActivate}
+          $isactive={isAnimationActivate}
           initialtranslateposition={initialAnimationTranslateYPosition}
         >
           <Rating withoutText />
@@ -88,8 +88,8 @@ const Testimony = styled.article<
   opacity: 0;
   transition: 1s;
 
-  ${({ isactive }) =>
-    isactive &&
+  ${({ $isactive }) =>
+    $isactive &&
     css`
       transform: translatey(0);
       opacity: 1;

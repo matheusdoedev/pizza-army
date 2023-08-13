@@ -15,7 +15,7 @@ const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
       <StrengthsListOption
         key={description}
         translatey={80 / (index + 1)}
-        isactive={isAnimationActivate}
+        $isactive={isAnimationActivate}
       >
         <img src={PizzaIcon} alt={description} />
         {description}
@@ -23,7 +23,7 @@ const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
     ));
 
   return (
-    <StrengthsList isactive={isAnimationActivate}>
+    <StrengthsList $isactive={isAnimationActivate}>
       {strenghtsList()}
     </StrengthsList>
   );
@@ -53,8 +53,8 @@ const StrengthsList = styled.ul<AnimatedFooterElements>`
     opacity: 0;
     transition: 1s;
 
-    ${({ isactive }) =>
-      isactive &&
+    ${({ $isactive }) =>
+      $isactive &&
       css`
         transform: translateX(0);
         opacity: 1;
@@ -88,8 +88,8 @@ const StrengthsListOption = styled.li<
   opacity: 0;
   transition: 1s;
 
-  ${({ isactive }) =>
-    isactive &&
+  ${({ $isactive }) =>
+    $isactive &&
     css`
       transform: translateX(0);
       opacity: 1;

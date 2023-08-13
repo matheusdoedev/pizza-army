@@ -27,7 +27,7 @@ const PizzaAnimation = () => {
       <PizzaAnimationContainer>
         {animatedImages()}
 
-        <DiscoverTheTaste isactive={isFooterElementsTransitionActive}>
+        <DiscoverTheTaste $isactive={isFooterElementsTransitionActive}>
           <Title
             as="h2"
             fontSize={["28px", "48px"]}
@@ -93,8 +93,8 @@ const DiscoverTheTaste = styled.section<AnimatedFooterElements>`
     text-align: center;
   }
 
-  ${({ isactive }) =>
-    isactive &&
+  ${({ $isactive }) =>
+    $isactive &&
     css`
       transform: translatey(0);
       opacity: 1;
@@ -109,8 +109,8 @@ const DiscoverTheTaste = styled.section<AnimatedFooterElements>`
 
     transform: translateX(50px);
 
-    ${({ isactive }) =>
-      isactive &&
+    ${({ $isactive }) =>
+      $isactive &&
       css`
         transform: translateX(0);
       `}
