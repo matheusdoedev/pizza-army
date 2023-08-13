@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
  */
 export const useOnResizeWindow = () => {
   const [windowSizes, setWindowSizes] = useState({
-    innerWidth: 0,
-    innerHeight: 0,
+    innerWidth: document.documentElement.clientWidth,
+    innerHeight: document.documentElement.clientHeight,
   });
 
   const handleOnResize = () => {
