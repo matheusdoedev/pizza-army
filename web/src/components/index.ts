@@ -4,6 +4,7 @@ export { default as Header } from "./Header";
 export { default as IngredientsList } from "./IngredientsList";
 export { default as PizzaAnimation } from "./PizzaAnimation";
 export { default as PizzaAnimationImg } from "./PizzaAnimationImg";
+export { default as PizzaImages } from "./PizzaImages";
 export { default as ProductSelector } from "./ProductSelector";
 export { default as Rating } from "./Rating";
 export { default as Select } from "./Select";
