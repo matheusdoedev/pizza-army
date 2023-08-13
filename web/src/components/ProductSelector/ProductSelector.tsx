@@ -34,7 +34,7 @@ const ProductSelector = () => {
 
   const pizzaImages = () =>
     PIZZAS_IMAGES_LIST.map(({ img2x, alt }) => (
-      <PizzaImage src={img2x} alt={alt} />
+      <PizzaImage key={img2x} src={img2x} alt={alt} />
     ));
 
   const isDecrementButtonDisabled = unitsCount === 0;
