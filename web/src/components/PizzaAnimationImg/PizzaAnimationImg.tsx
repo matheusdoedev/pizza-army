@@ -36,23 +36,15 @@ const PizzaAnimationImgComponent: FC<PizzaAnimationImgProps> = ({
     }
   }, [center, height, innerWidth, left, top, width]);
 
-  return (
-    <PizzaAnimationImg ref={pizzaAnimationImgRef} center={center} {...props} />
-  );
+  return <PizzaAnimationImg ref={pizzaAnimationImgRef} {...props} />;
 };
 
 const PizzaAnimationImg = styled.img<
-  Omit<PizzaAnimationImgProps, "top" | "left" | "width" | "height">
+  Omit<PizzaAnimationImgProps, "top" | "left" | "width" | "height" | "center">
 >`
   position: absolute;
   z-index: ${({ zindex }) => zindex ?? 1};
   opacity: ${({ opacity }) => opacity ?? 1};
-
-  ${({ center }) =>
-    center &&
-    css`
-      left: 50%;
-    `}
 
   ${({ rotate }) =>
     rotate &&
