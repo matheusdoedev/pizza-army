@@ -16,7 +16,7 @@ const Text = styled.p<TextProps>`
       ? css`
           font-size: ${fontSize[0] ?? "10px"};
 
-          @media (min-width: ${theme.breakpoints.md}) {
+          @media (min-width: ${theme.breakpoints.xl}) {
             font-size: ${fontSize[1] ?? "14px"};
           }
         `
@@ -29,7 +29,7 @@ const Text = styled.p<TextProps>`
       ? css`
           letter-spacing: ${letterSpacing[0] ?? "none"};
 
-          @media (min-width: ${theme.breakpoints.md}) {
+          @media (min-width: ${theme.breakpoints.xl}) {
             letter-spacing: ${letterSpacing[1]};
           }
         `

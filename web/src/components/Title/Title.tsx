@@ -14,7 +14,7 @@ const Title = styled.h2<TitleProps>`
       ? css`
           font-size: ${fontSize[0] ?? "32px"};
 
-          @media (min-width: ${theme.breakpoints.md}) {
+          @media (min-width: ${theme.breakpoints.xl}) {
             font-size: ${fontSize[1] ?? "24px"};
           }
         `
@@ -27,7 +27,7 @@ const Title = styled.h2<TitleProps>`
       ? css`
           letter-spacing: ${letterSpacing[0] ?? "none"};
 
-          @media (min-width: ${theme.breakpoints.md}) {
+          @media (min-width: ${theme.breakpoints.xl}) {
             letter-spacing: ${letterSpacing[1]};
           }
         `

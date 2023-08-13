@@ -1,16 +1,22 @@
 import { FC } from "react";
 import { css, styled } from "styled-components";
 
-import PizzaIcon from "@/assets/icons/pizza.svg";
+import { PizzaIcon } from "@/assets";
 import { INGREDIENTS_OPTIONS as STRENGTHS_OPTIONS } from "@/constants";
-import { AnimatedElements, ComponentWithAnimation } from "@/interfaces";
+import { AnimatedFooterElements, ComponentWithAnimation } from "@/interfaces";
+
+import { theme } from "@/styles";
 
 const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
   isAnimationActivate,
 }) => {
   const strenghtsList = () =>
-    STRENGTHS_OPTIONS.map(({ description }) => (
-      <StrengthsListOption key={description}>
+    STRENGTHS_OPTIONS.map(({ description }, index) => (
+      <StrengthsListOption
+        key={description}
+        translateY={80 / (index + 1)}
+        isActive={isAnimationActivate}
+      >
         <img src={PizzaIcon} alt={description} />
         {description}
       </StrengthsListOption>
@@ -23,30 +29,43 @@ const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
   );
 };
 
-const StrengthsList = styled.ul<AnimatedElements>`
+const StrengthsList = styled.ul<AnimatedFooterElements>`
   display: flex;
   flex-direction: column;
   max-width: 360px;
 
   position: absolute;
-  top: 660px;
-  right: 144px;
+  top: 940px;
+  left: 50%;
+  margin-left: -180px;
+  right: 0;
   z-index: 1;
 
-  transform: translateX(-50px);
-  opacity: 0;
-  transition: 1s;
+  transform: none;
 
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      transform: translateX(0);
-      opacity: 1;
-      transition: 1s;
-    `}
+  @media (min-width: ${theme.breakpoints.xl}) {
+    top: 660px;
+    left: initial;
+    margin-left: 0;
+    right: 144px;
+
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: 1s;
+
+    ${({ isActive }) =>
+      isActive &&
+      css`
+        transform: translateX(0);
+        opacity: 1;
+        transition: 1s;
+      `}
+  }
 `;
 
-const StrengthsListOption = styled.li`
+const StrengthsListOption = styled.li<
+  AnimatedFooterElements & { translateY: number }
+>`
   display: flex;
   align-items: center;
   column-gap: 8px;
@@ -63,6 +82,23 @@ const StrengthsListOption = styled.li`
   & > img {
     width: 24px;
     height: 24px;
+  }
+
+  transform: translateX(-${({ translateY }) => translateY}px);
+  opacity: 0;
+  transition: 1s;
+
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      transform: translateX(0);
+      opacity: 1;
+      transition: 1s;
+    `}
+
+  @media (min-width: ${theme.breakpoints.xl}) {
+    transform: none;
+    opacity: 1;
   }
 `;
 

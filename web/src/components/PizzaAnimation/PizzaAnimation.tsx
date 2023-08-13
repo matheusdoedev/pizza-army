@@ -30,14 +30,14 @@ const PizzaAnimation = () => {
         <DiscoverTheTaste isActive={isFooterElementsTransitionActive}>
           <Title
             as="h2"
-            fontSize="48px"
-            letterSpacing="2.88px"
+            fontSize={["28px", "48px"]}
+            letterSpacing={["0.84px", "2.88px"]}
             color={theme.colors.gray["800"]}
           >
             DESCUBRA O SABOR DA TRADIÇÃO
           </Title>
           <Text
-            fontSize="16px"
+            fontSize={["12px", "16px"]}
             color={theme.colors.gray["900"]}
             fontWeight="300"
           >
@@ -63,32 +63,58 @@ const PizzaAnimationWrapper = styled.section`
 const PizzaAnimationContainer = styled.section`
   position: relative;
   width: 1290px;
-  height: 1400px;
+  height: 1500px;
   left: 50%;
   margin: 0 auto 0 -645px;
+
+  @media (min-width: ${theme.breakpoints.xl}) {
+    height: 1400px;
+  }
 `;
 
 const DiscoverTheTaste = styled.section<AnimatedFooterElements>`
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-  max-width: 346px;
+  max-width: 326px;
 
   position: absolute;
-  top: 700px;
-  left: 64px;
+  top: 840px;
+  left: 50%;
+  margin-left: -163px;
 
-  transform: translateX(50px);
+  transform: translateY(-50px);
+
   opacity: 0;
   transition: 1s;
+
+  & h2,
+  & p {
+    text-align: center;
+  }
 
   ${({ isActive }) =>
     isActive &&
     css`
-      transform: translateX(0);
+      transform: translateY(0);
       opacity: 1;
       transition: 1s;
     `}
+
+  @media (min-width: ${theme.breakpoints.xl}) {
+    max-width: 346px;
+    top: 700px;
+    left: 64px;
+    margin-left: 0;
+
+    transform: translateX(50px);
+
+    ${({ isActive }) =>
+      isActive &&
+      css`
+        transform: translateX(0);
+      `}
+  }
 `;
 
 export default PizzaAnimation;

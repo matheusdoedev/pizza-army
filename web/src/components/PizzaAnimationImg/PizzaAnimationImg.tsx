@@ -19,7 +19,7 @@ const PizzaAnimationImgComponent: FC<PizzaAnimationImgProps> = ({
   useEffect(() => {
     if (!pizzaAnimationImgRef.current) return;
 
-    const isMobile = innerWidth < 768;
+    const isMobile = innerWidth < 1200;
     const index = isMobile ? 0 : 1;
 
     pizzaAnimationImgRef.current.style.top = top ? `${top[index]}px` : "0";

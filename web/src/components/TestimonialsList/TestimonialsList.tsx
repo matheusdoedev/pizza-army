@@ -37,20 +37,40 @@ const TestimonialsList: FC<ComponentWithAnimation> = ({
       )
     );
 
-  return <Testimonials>{testimonialsList()}</Testimonials>;
+  return (
+    <Testimonials>
+      <TestimonialsContainer>{testimonialsList()}</TestimonialsContainer>
+    </Testimonials>
+  );
 };
 
 const Testimonials = styled.section`
   position: absolute;
-  top: 1050px;
+  top: 1250px;
   left: 50%;
-  margin-left: -480px;
+  margin-left: -163px;
+  max-width: 326px;
   z-index: 1;
+  overflow: scroll;
 
+  @media (min-width: ${theme.breakpoints.xl}) {
+    max-width: 960px;
+    top: 1050px;
+    left: 50%;
+    margin-left: -480px;
+  }
+`;
+
+const TestimonialsContainer = styled.div`
   display: flex;
   justify-content: center;
-  column-gap: 32px;
-  max-width: 960px;
+  column-gap: 16px;
+  width: 960px;
+  overflow: scroll;
+
+  @media (min-width: ${theme.breakpoints.xl}) {
+    column-gap: 32px;
+  }
 `;
 
 const Testimony = styled.article<
