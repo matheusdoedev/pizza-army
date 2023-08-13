@@ -35,7 +35,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     width: [234, 409],
     height: [234, 389],
     center: true,
-    zIndex: 3,
+    zindex: 3,
   },
   cheese: {
     src: CheeseImg,
@@ -45,7 +45,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [410, 132],
     opacity: 1,
     top: [0, 0],
-    zIndex: 2,
+    zindex: 2,
   },
   bigBacon: {
     src: BigBaconImg,
@@ -55,7 +55,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [480, 180],
     opacity: 1,
     top: [100, 220],
-    zIndex: 2,
+    zindex: 2,
   },
   pepper: {
     src: PepperImg,
@@ -65,7 +65,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [790, 316],
     opacity: 1,
     top: [285, 180],
-    zIndex: 2,
+    zindex: 2,
   },
   transparentTomato: {
     src: TomatoTransparentImg,
@@ -75,7 +75,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [420, 10],
     opacity: 1,
     top: [161, 161],
-    zIndex: 2,
+    zindex: 2,
   },
   smallLettuceB: {
     src: SmallLettuceBImg,
@@ -85,7 +85,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [490, 153],
     opacity: 1,
     top: [240, 391],
-    zIndex: 2,
+    zindex: 2,
   },
   brown: {
     src: BrownImg,
@@ -95,7 +95,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [490, 321],
     opacity: 1,
     top: [330, 388],
-    zIndex: 2,
+    zindex: 2,
   },
   smallBacon: {
     src: SmallBaconImg,
@@ -105,7 +105,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [445, 285],
     opacity: 1,
     top: [275, 460],
-    zIndex: 2,
+    zindex: 2,
   },
   plant: {
     src: PlantImg,
@@ -115,7 +115,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [720, 858],
     opacity: 1,
     top: [0, 0],
-    zIndex: 2,
+    zindex: 2,
   },
   grape: {
     src: GrapeImg,
@@ -125,7 +125,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [760, 1070],
     opacity: 1,
     top: [0, 0],
-    zIndex: 2,
+    zindex: 2,
   },
   lettuce: {
     src: LettuceImg,
@@ -135,7 +135,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [760, 885],
     opacity: 1,
     top: [56, 83],
-    zIndex: 2,
+    zindex: 2,
   },
   smallLettuce: {
     src: SmallLettuceImg,
@@ -145,7 +145,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [750, 1164],
     opacity: 1,
     top: [40, 127],
-    zIndex: 2,
+    zindex: 2,
   },
   tomato: {
     src: TomatoImg,
@@ -155,7 +155,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [780, 1090],
     opacity: 1,
     top: [104, 205],
-    zIndex: 2,
+    zindex: 2,
   },
   grass: {
     src: GrassImg,
@@ -165,7 +165,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [780, 1051],
     opacity: 1,
     top: [240, 292],
-    zIndex: 1,
+    zindex: 1,
   },
   onion: {
     src: OnionImg,
@@ -175,7 +175,7 @@ export const ANIMATED_IMAGES_POSITION_DEFAULT_VALUE: AnimatedImages = {
     left: [780, 875],
     opacity: 1,
     top: [185, 293],
-    zIndex: 2,
+    zindex: 2,
   },
 };
 

@@ -45,7 +45,7 @@ const PizzaAnimationImg = styled.img<
   Omit<PizzaAnimationImgProps, "top" | "left" | "width" | "height">
 >`
   position: absolute;
-  z-index: ${({ zIndex }) => zIndex ?? 1};
+  z-index: ${({ zindex }) => zindex ?? 1};
   opacity: ${({ opacity }) => opacity ?? 1};
 
   ${({ center }) =>

@@ -14,8 +14,8 @@ const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
     STRENGTHS_OPTIONS.map(({ description }, index) => (
       <StrengthsListOption
         key={description}
-        translateY={80 / (index + 1)}
-        isActive={isAnimationActivate}
+        translatey={80 / (index + 1)}
+        isactive={isAnimationActivate}
       >
         <img src={PizzaIcon} alt={description} />
         {description}
@@ -23,7 +23,7 @@ const StrenghtsListComponent: FC<ComponentWithAnimation> = ({
     ));
 
   return (
-    <StrengthsList isActive={isAnimationActivate}>
+    <StrengthsList isactive={isAnimationActivate}>
       {strenghtsList()}
     </StrengthsList>
   );
@@ -53,8 +53,8 @@ const StrengthsList = styled.ul<AnimatedFooterElements>`
     opacity: 0;
     transition: 1s;
 
-    ${({ isActive }) =>
-      isActive &&
+    ${({ isactive }) =>
+      isactive &&
       css`
         transform: translateX(0);
         opacity: 1;
@@ -64,7 +64,7 @@ const StrengthsList = styled.ul<AnimatedFooterElements>`
 `;
 
 const StrengthsListOption = styled.li<
-  AnimatedFooterElements & { translateY: number }
+  AnimatedFooterElements & { translatey: number }
 >`
   display: flex;
   align-items: center;
@@ -84,12 +84,12 @@ const StrengthsListOption = styled.li<
     height: 24px;
   }
 
-  transform: translateX(-${({ translateY }) => translateY}px);
+  transform: translateX(-${({ translatey }) => translatey}px);
   opacity: 0;
   transition: 1s;
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isactive }) =>
+    isactive &&
     css`
       transform: translateX(0);
       opacity: 1;

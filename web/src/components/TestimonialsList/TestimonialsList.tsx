@@ -13,11 +13,11 @@ const TestimonialsList: FC<ComponentWithAnimation> = ({
 }) => {
   const testimonialsList = () =>
     TESTIMONIALS_LIST.map(
-      ({ text, userName, initialAnimationTranslateYPosition }) => (
+      ({ id, text, userName, initialAnimationTranslateYPosition }) => (
         <Testimony
-          key={userName}
-          isActive={isAnimationActivate}
-          initialTranslatePosition={initialAnimationTranslateYPosition}
+          key={id}
+          isactive={isAnimationActivate}
+          initialtranslateposition={initialAnimationTranslateYPosition}
         >
           <Rating withoutText />
           <Text align="center" fontWeight="300">
@@ -74,24 +74,24 @@ const TestimonialsContainer = styled.div`
 `;
 
 const Testimony = styled.article<
-  AnimatedFooterElements & { initialTranslatePosition: string }
+  AnimatedFooterElements & { initialtranslateposition: string }
 >`
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 12px;
 
-  ${({ initialTranslatePosition }) => css`
-    transform: translateY(${initialTranslatePosition});
+  ${({ initialtranslateposition }) => css`
+    transform: translatey(${initialtranslateposition});
   `}
 
   opacity: 0;
   transition: 1s;
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isactive }) =>
+    isactive &&
     css`
-      transform: translateY(0);
+      transform: translatey(0);
       opacity: 1;
       transition: 1s;
       transition-delay: 0.5s;

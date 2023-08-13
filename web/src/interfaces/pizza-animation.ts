@@ -1,5 +1,5 @@
 export interface AnimatedFooterElements {
-  isActive: boolean;
+  isactive: boolean;
 }
 
 export interface PizzaAnimationImgProps {
@@ -13,7 +13,7 @@ export interface PizzaAnimationImgProps {
   rotate?: number;
   center?: boolean;
   opacity?: number;
-  zIndex?: number;
+  zindex?: number;
 }
 
 export interface AnimatedImages {
