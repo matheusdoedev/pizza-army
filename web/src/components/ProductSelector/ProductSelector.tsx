@@ -53,6 +53,7 @@ const ProductSelector = () => {
           <Select
             label="Sabor"
             name="taste"
+            placeholder="Selecione um sabor"
             value={selectedProductTaste}
             options={productsOptions}
             onChange={handleChangeProductTaste}
