@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Admin, Product } from "@/screens";
+import { Admin, CreateProduct, Product } from "@/screens";
 
 export const router = createBrowserRouter([
   {
@@ -10,5 +10,9 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/admin/create-product",
+    element: <CreateProduct />,
   },
 ]);

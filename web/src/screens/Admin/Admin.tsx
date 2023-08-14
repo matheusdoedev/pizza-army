@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { styled } from "styled-components";
 
-import { Button, Container, Header, Table } from "@/components";
+import { Button, Container, Table } from "@/components";
 import { PRODUCT_OPTIONS_FALLBACK } from "@/constants";
 import { pizzaArmyService } from "@/services";
+import { AdminPage } from "@/layouts";
 
 const TABLE_HEADS = ["Título", "Descrição", "Preço"];
 
@@ -38,9 +39,7 @@ const Admin = () => {
   }, [getProductsData]);
 
   return (
-    <div>
-      <Header $isadminheader />
-
+    <AdminPage>
       <Head>
         <HeadContainer>
           <Button
@@ -59,7 +58,7 @@ const Admin = () => {
           theadStyle={{ display: "grid", gridTemplateColumns: "2fr 3fr 1fr" }}
         />
       </Container>
-    </div>
+    </AdminPage>
   );
 };
 
