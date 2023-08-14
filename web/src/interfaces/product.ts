@@ -4,3 +4,9 @@ export interface Product {
   price: number;
   title: string;
 }
+
+export interface ProductDto {
+  description: string;
+  price: number;
+  title: string;
+}

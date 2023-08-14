@@ -1,4 +1,4 @@
-import { Product } from "@/interfaces";
+import { Product, ProductDto } from "@/interfaces";
 import { fetchClient } from "@/providers";
 
 const PRODUCTS_BASE_URL = "/products";
@@ -12,5 +12,9 @@ export const pizzaArmyService = {
 
   getProductById(productId: string) {
     return pizzaArmyApi.get<Product>(`${PRODUCTS_BASE_URL}/${productId}`);
+  },
+
+  postCreateProduct(productDto: ProductDto) {
+    return pizzaArmyApi.post(`${PRODUCTS_BASE_URL}/create`, productDto);
   },
 };

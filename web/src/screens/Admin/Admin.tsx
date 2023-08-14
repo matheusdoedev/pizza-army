@@ -17,7 +17,10 @@ const Admin = () => {
 
   const { data: getProductsData } = useQuery(
     "getProducts",
-    pizzaArmyService.getProducts
+    pizzaArmyService.getProducts,
+    {
+      refetchOnMount: true,
+    }
   );
 
   const products = useMemo(() => {

@@ -43,4 +43,12 @@ export const Reset = createGlobalStyle`
 	fieldset {
         border: none;
     }
+
+	.MuiOutlinedInput-notchedOutline {
+    border-color: ${({ theme }) => theme.colors.gray["400"]};
+  }
+
+  .Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: ${({ theme }) => theme.colors.primary} !important;
+  }
 `;
