@@ -33,5 +33,10 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Environment Variables
 .env
+.env.production
+
+# db volume
 db-dump
