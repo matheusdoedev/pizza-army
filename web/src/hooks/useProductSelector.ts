@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "react-query";
 
+import { PRODUCT_OPTIONS_FALLBACK } from "@/constants";
 import { SelectOption } from "@/interfaces";
 import { pizzaArmyService } from "@/services";
+import { serializeProductsDataInSelectOptions } from "@/utils";
 
 type UnitsCountActionType = "decrement" | "increment";
 
@@ -14,12 +16,24 @@ export const useProductSelector = () => {
     useQuery("getProducts", pizzaArmyService.getProducts);
 
   const productsOptions: SelectOption[] = useMemo(() => {
-    if (!getProductsData) return [];
+    if (!getProductsData || !getProductsData?.data.length) {
+      const options = serializeProductsDataInSelectOptions(
+        PRODUCT_OPTIONS_FALLBACK
+      );
 
-    return getProductsData.data.map(({ title, id }) => ({
-      label: title,
-      value: id,
-    }));
+      setSelectedProductTaste(options[0].value);
+
+      return options;
+    }
+
+    const options = serializeProductsDataInSelectOptions([
+      ...PRODUCT_OPTIONS_FALLBACK,
+      ...getProductsData.data,
+    ]);
+
+    setSelectedProductTaste(options[0].value);
+
+    return options;
   }, [getProductsData]);
 
   const { data: getProductData } = useQuery(
@@ -29,13 +43,7 @@ export const useProductSelector = () => {
   );
 
   const productData = useMemo(() => {
-    if (!getProductData)
-      return {
-        title: "Pepperoni",
-        description: "A melhor pizza",
-        id: 1,
-        price: 60,
-      };
+    if (!getProductData) return PRODUCT_OPTIONS_FALLBACK[0];
 
     return getProductData.data;
   }, [getProductData]);

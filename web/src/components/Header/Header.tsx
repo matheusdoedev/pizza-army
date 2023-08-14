@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import { FC } from "react";
+import { css, styled } from "styled-components";
 import { FaChevronDown } from "react-icons/fa";
 import { MdOutlineShoppingCart, MdOutlinePerson, MdMenu } from "react-icons/md";
 
@@ -6,9 +7,32 @@ import { Container, Text, Title } from "@/components";
 
 import { theme } from "@/styles";
 
-const Header = () => {
+interface HeaderProps {
+  $isadminheader?: boolean;
+}
+
+const Header: FC<HeaderProps> = ({ $isadminheader }) => {
+  console.log($isadminheader);
+
+  if ($isadminheader)
+    return (
+      <HeaderWrapper $isadminheader={$isadminheader}>
+        <HeaderContainer $isadminheader={$isadminheader}>
+          <Title
+            as="h1"
+            fontSize={["20px", "24px"]}
+            color={theme.colors.gray["200"]}
+            align="center"
+            letterSpacing={["1.6px", "1.92px"]}
+          >
+            Pizza Army
+          </Title>
+        </HeaderContainer>
+      </HeaderWrapper>
+    );
+
   return (
-    <header>
+    <HeaderWrapper>
       <HeaderContainer>
         <BuyButton>
           <Text fontWeight="600" letterSpacing="0.21px">
@@ -45,20 +69,41 @@ const Header = () => {
           </button>
         </HeaderInfoSection>
       </HeaderContainer>
-    </header>
+    </HeaderWrapper>
   );
 };
 
-const HeaderContainer = styled(Container)`
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  align-items: center;
+const HeaderWrapper = styled.header<HeaderProps>`
+  background: ${({ theme }) => theme.colors.gray["100"]};
+  width: 100%;
   padding: 12px 0;
 
   @media (min-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: repeat(3, 1fr);
     padding: 18px 0;
   }
+
+  ${({ $isadminheader }) =>
+    $isadminheader &&
+    css`
+      background: ${({ theme }) => theme.colors.primary};
+    `}
+`;
+
+const HeaderContainer = styled(Container)<HeaderProps>`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  ${({ $isadminheader }) =>
+    $isadminheader &&
+    css`
+      display: flex;
+      justify-content: center;
+    `}
 `;
 
 const BuyButton = styled.button`

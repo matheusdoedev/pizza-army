@@ -9,6 +9,7 @@ export { default as ProductSelector } from "./ProductSelector";
 export { default as Rating } from "./Rating";
 export { default as Select } from "./Select";
 export { default as StrenghtsList } from "./StrenghtsList";
+export { default as Table } from "./Table";
 export { default as Title } from "./Title";
 export { default as TestimonialsList } from "./TestimonialsList";
 export { default as Text } from "./Text";
