@@ -12,8 +12,6 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ $isadminheader }) => {
-  console.log($isadminheader);
-
   if ($isadminheader)
     return (
       <HeaderWrapper $isadminheader={$isadminheader}>
