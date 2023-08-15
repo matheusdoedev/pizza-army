@@ -13,7 +13,6 @@ async function bootstrap() {
     .setTitle('Pizza Army')
     .setDescription('Pizza Army application api.')
     .setVersion('v1.0.0')
-    .addTag('pizza-army')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
