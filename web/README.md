@@ -2,7 +2,7 @@
 
 It is a web application made in React with Vite for Pizza Army application.
 
-## Getting Started
+## Get Started
 
 ### Installation
 
