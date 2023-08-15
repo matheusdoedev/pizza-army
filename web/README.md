@@ -73,6 +73,10 @@ yarn preview
 npm run preview
 ```
 
+## To access admin dashboard
+
+- To access admin dashboard just access '/admin' path in browser.
+
 ## Technologies used in this application
 
 - React

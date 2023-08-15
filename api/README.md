@@ -84,6 +84,22 @@ yarn start:prod
 yarn run start:prod
 ```
 
+## API Docs
+
+- Access '/swagger' path endpoint in order to see all API endpoints.
+
+## Technologies used in this application
+
+- Node.js
+- Nest.js
+- TypeScript
+- Jest
+- TypeOrm
+- MVC
+- OOP
+- MySQL
+- Swagger
+
 ## Contributing
 
 1. Fork it (<git@github.com:matheusdoedev/pizza-army.git>)
