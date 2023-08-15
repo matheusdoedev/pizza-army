@@ -21,7 +21,7 @@ git clone git@github.com:matheusdoedev/pizza-army.git
 
 <!-- Api. Obs: Feel free to change DB credentials according to your mysql credentials. You should change to in docker-compose on db service. -->
 
-.env.production
+.env.production in api folder
 
 ```env
 NODE_ENV='production'
@@ -35,7 +35,7 @@ DB_DATABASE=mysql
 
 <!-- Web -->
 
-.env.production
+.env.production in web folder
 
 ```env
 VITE_REST_API_URL=http://localhost:3333/api/v1
