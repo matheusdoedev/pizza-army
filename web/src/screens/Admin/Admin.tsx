@@ -21,7 +21,7 @@ const Admin = () => {
     "getProducts",
     pizzaArmyService.getProducts,
     {
-      refetchOnMount: true,
+      refetchOnMount: "always",
     }
   );
 
