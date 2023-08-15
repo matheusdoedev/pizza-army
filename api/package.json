@@ -1,6 +1,6 @@
 {
   "name": "pizza-army-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "It is a REST API made to serve Pizza Army web project",
   "author": "@matheusdoedev",
   "private": true,
