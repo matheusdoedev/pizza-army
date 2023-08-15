@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { PRODUCT_OPTIONS_FALLBACK } from "@/constants";
 import { SelectOption } from "@/interfaces";
 import { pizzaArmyService } from "@/services";
-import { serializeProductsDataInSelectOptions } from "@/utils";
+import { parseToBRL, serializeProductsDataInSelectOptions } from "@/utils";
 
 type UnitsCountActionType = "decrement" | "increment";
 
@@ -39,7 +39,7 @@ export const useProductSelector = () => {
   const { data: getProductData } = useQuery(
     ["getProductData", selectedProductTaste],
     () => pizzaArmyService.getProductById(selectedProductTaste),
-    { enabled: !!selectedProductTaste }
+    { enabled: !!selectedProductTaste && selectedProductTaste !== "1" }
   );
 
   const productData = useMemo(() => {
@@ -47,6 +47,12 @@ export const useProductSelector = () => {
 
     return getProductData.data;
   }, [getProductData]);
+
+  const subtotal = useMemo(() => {
+    const total = productUnitsCount * productData.price;
+
+    return parseToBRL(total);
+  }, [productData, productUnitsCount]);
 
   const isDecrementButtonDisabled = productUnitsCount === 0;
 
@@ -65,6 +71,7 @@ export const useProductSelector = () => {
   };
 
   return {
+    subtotal,
     productData,
     isLoadingProductsOptions,
     isDecrementButtonDisabled,

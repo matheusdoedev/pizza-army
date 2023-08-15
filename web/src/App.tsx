@@ -7,7 +7,6 @@ import { queryClient } from "@/providers";
 import { router } from "@/routes";
 
 import { Animations, Reset, theme } from "@/styles";
-
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {

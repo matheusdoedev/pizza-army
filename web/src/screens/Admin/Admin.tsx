@@ -5,8 +5,10 @@ import { styled } from "styled-components";
 
 import { Button, Container, Table } from "@/components";
 import { PRODUCT_OPTIONS_FALLBACK } from "@/constants";
-import { pizzaArmyService } from "@/services";
+import { Product } from "@/interfaces";
 import { AdminPage } from "@/layouts";
+import { pizzaArmyService } from "@/services";
+import { parseToBRL } from "@/utils";
 
 const TABLE_HEADS = ["Título", "Descrição", "Preço"];
 
@@ -23,22 +25,22 @@ const Admin = () => {
     }
   );
 
-  const products = useMemo(() => {
-    if (!getProductsData) {
-      return PRODUCT_OPTIONS_FALLBACK.map(({ title, description, price }) => ({
-        title,
-        description,
-        price,
-      }));
-    }
+  const handleSerializedProductsToTable = (data: Product[]) => {
+    return data.map(({ title, description, price }) => ({
+      title,
+      description,
+      price: parseToBRL(price),
+    }));
+  };
 
-    return [...PRODUCT_OPTIONS_FALLBACK, ...getProductsData.data].map(
-      ({ title, description, price }) => ({
-        title,
-        description,
-        price,
-      })
-    );
+  const products = useMemo(() => {
+    if (!getProductsData)
+      return handleSerializedProductsToTable(PRODUCT_OPTIONS_FALLBACK);
+
+    return handleSerializedProductsToTable([
+      ...PRODUCT_OPTIONS_FALLBACK,
+      ...getProductsData.data,
+    ]);
   }, [getProductsData]);
 
   return (

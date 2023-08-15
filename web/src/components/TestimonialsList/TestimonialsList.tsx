@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { css, styled } from "styled-components";
 
-import RedVerified from "@/assets/icons/red-verified.svg";
+import { RedVerifiedIcon } from "@/assets";
 import { Rating, Text } from "@/components";
 import { TESTIMONIALS_LIST } from "@/constants";
 import { AnimatedFooterElements, ComponentWithAnimation } from "@/interfaces";
@@ -24,7 +24,7 @@ const TestimonialsList: FC<ComponentWithAnimation> = ({
             {text}
           </Text>
           <UserVerified>
-            <img src={RedVerified} alt="Consumidor verificado" />
+            <img src={RedVerifiedIcon} alt="Consumidor verificado" />
             <Text
               fontWeight="700"
               align="center"

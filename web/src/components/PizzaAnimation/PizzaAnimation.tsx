@@ -8,8 +8,8 @@ import {
   PizzaAnimationImg,
 } from "@/components";
 
-import { usePizzaOnScrollAnimation } from "@/hooks";
 import { AnimatedFooterElements } from "@/interfaces";
+import { usePizzaOnScrollAnimation } from "@/hooks";
 
 import { theme } from "@/styles";
 

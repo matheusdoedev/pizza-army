@@ -16,6 +16,7 @@ const PizzaAnimationImgComponent: FC<PizzaAnimationImgProps> = ({
   const pizzaAnimationImgRef = useRef<HTMLImageElement>(null);
   const { innerWidth } = useOnResizeWindow();
 
+  /* This solution was used instead of styled-components because of the classname generation of styled-components are bugging media query in Pizza Img animation. So, it was did using useRef, and a hook was did to track window resizes (useOnResize Hook) */
   useEffect(() => {
     if (!pizzaAnimationImgRef.current) return;
 

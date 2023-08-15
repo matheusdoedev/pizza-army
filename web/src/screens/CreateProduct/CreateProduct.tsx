@@ -41,7 +41,7 @@ const CreateProduct = () => {
       };
 
       await mutateAsync(productDto);
-      toast.success("Produto cadastrar com sucesso");
+      toast.success("Produto cadastrado com sucesso");
       navigate("/admin");
     } catch (error) {
       if (error instanceof ValidationError) {

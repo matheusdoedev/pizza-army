@@ -1,5 +1,6 @@
-import { TitleProps } from "@/interfaces";
 import { css, styled } from "styled-components";
+
+import { TitleProps } from "@/interfaces";
 
 const Title = styled.h2<TitleProps>`
   font-family: ${({ theme }) => theme.fonts.primary};

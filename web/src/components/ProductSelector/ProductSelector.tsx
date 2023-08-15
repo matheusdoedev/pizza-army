@@ -25,6 +25,7 @@ const ProductSelector = () => {
     selectedProductTaste,
     isDecrementButtonDisabled,
     productUnitsCount,
+    subtotal,
   } = useProductSelector();
 
   const { title, description } = productData;
@@ -80,7 +81,7 @@ const ProductSelector = () => {
               fontSize={["16px", "18px"]}
               letterSpacing={["0.48px", "0.84px"]}
             >
-              Subtotal: <strong>R$ 89,90</strong>
+              Subtotal: <strong>{subtotal}</strong>
             </Text>
           </SubtotalSection>
 
