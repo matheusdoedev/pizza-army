@@ -26,7 +26,7 @@ npm install
 
 #### 1. Set your env variables
 
-.env.production
+.env
 
 ```env
 NODE_ENV='development'
@@ -52,7 +52,7 @@ yarn run start:dev
 
 #### 1. Set your env variables
 
-.env.production
+.env
 
 ```env
 NODE_ENV='production'
