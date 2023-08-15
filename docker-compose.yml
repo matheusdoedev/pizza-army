@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=mysql
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
+      - MYSQL_ROOT_PASSWORD=docker
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./api/db-dump/:/docker-entrypoint-initdb.d
+
+  api:
+    build: ./api/.
+    ports:
+      - "3333:3333"
+    command: yarn start:prod
+    depends_on:
+      - db
+
+  web:
+    build: ./web/.
+    ports:
+      - "4173:4173"
+    command: yarn preview --host
+    depends_on:
+      - db
+      - api
